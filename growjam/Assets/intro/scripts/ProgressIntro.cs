@@ -23,5 +23,4 @@ public class ProgressIntro : MonoBehaviour {
         else
             SceneManager.LoadScene("game");
     }
-
 }
