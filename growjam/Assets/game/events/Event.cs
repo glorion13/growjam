@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Event : MonoBehaviour {
+public class Event : MonoBehaviour {
 
     public string Title;
     public string Text;
+    public float DurationInTicks;
 
-    public abstract void Effect();
+    private Tickable[] tickables;
+
+    private void Start()
+    {
+        tickables = GetComponents<Tickable>();
+    }
 
 }
