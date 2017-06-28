@@ -8,14 +8,14 @@ public class DayCycle : Tickable
 {
     public GameObject Background;
 
-    private PassiveEffect activeEffect;
+    private OvertimeEffect enabledEffect;
 
-    public PassiveEffect dayEffect;
-    public PassiveEffect nightEffect;
+    public OvertimeEffect dayEffect;
+    public OvertimeEffect nightEffect;
 
     private void Start()
     {
-        activeEffect = dayEffect;
+        enabledEffect = dayEffect;
     }
 
     private int ticks;
@@ -34,7 +34,7 @@ public class DayCycle : Tickable
                 Background.GetComponent<Animation>().Play("night-day", PlayMode.StopAll);
                 dayEffect.gameObject.SetActive(true);
                 nightEffect.gameObject.SetActive(false);
-                activeEffect = dayEffect;
+                enabledEffect = dayEffect;
             }
         }
         else
@@ -46,9 +46,9 @@ public class DayCycle : Tickable
                 Background.GetComponent<Animation>().Play("day-night", PlayMode.StopAll);
                 dayEffect.gameObject.SetActive(false);
                 nightEffect.gameObject.SetActive(true);
-                activeEffect = nightEffect;
+                enabledEffect = nightEffect;
             }
         }
-        activeEffect.Tick();
+        enabledEffect.Trigger();
     }
 }

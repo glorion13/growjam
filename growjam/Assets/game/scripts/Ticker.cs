@@ -5,10 +5,13 @@ using UnityEngine;
 public class Ticker : MonoBehaviour
 {
     public List<Tickable> Tickables;
-    public float TickInterval;
+
+    public float TickRate;
+    public static float TickInterval;
 
     private void Start()
     {
+        TickInterval = TickRate;
         StartCoroutine(Tick());
     }
 

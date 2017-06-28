@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UI : MonoBehaviour {
 
     public GameObject EventPanel;
+    public GameObject EvolutionsPanel;
+
     public Text EventTitle;
     public Text EventText;
 

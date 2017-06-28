@@ -28,10 +28,25 @@ public class EventDeck : Tickable {
             {
                 Event triggeredEvent = getRandomEvent(events);
 
+                triggeredEvent.gameObject.SetActive(true);
+                StartCoroutine(DisableEvent(triggeredEvent));
+
                 UI.Pause();
                 UI.OpenEventPanel(triggeredEvent.Title, triggeredEvent.Text);
             }
         }
+        foreach (Event ev in GetComponentsInChildren<Event>())
+        {
+            OvertimeEffect effect = ev.GetComponent<OvertimeEffect>();
+            if (effect != null)
+                ev.GetComponent<OvertimeEffect>().Trigger();
+        }
+    }
+
+    private IEnumerator DisableEvent(Event ev)
+    {
+        yield return new WaitForSeconds(ev.DurationInTicks * Ticker.TickInterval);
+        ev.gameObject.SetActive(false);
     }
 
     private bool isEventTriggered()

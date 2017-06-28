@@ -8,11 +8,4 @@ public class Event : MonoBehaviour {
     public string Text;
     public float DurationInTicks;
 
-    private Tickable[] tickables;
-
-    private void Start()
-    {
-        tickables = GetComponents<Tickable>();
-    }
-
 }

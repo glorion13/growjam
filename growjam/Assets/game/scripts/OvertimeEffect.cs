@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PassiveEffect : Tickable {
+public class OvertimeEffect : MonoBehaviour {
 
     public int WaterRate;
     public int SunlightRate;
@@ -23,7 +23,7 @@ public class PassiveEffect : Tickable {
         Resources.HeatRate -= HeatRate;
     }
 
-    public override void Tick()
+    public void Trigger()
     {
         Resources.AddWater(WaterRate);
         Resources.AddSunlight(SunlightRate);
