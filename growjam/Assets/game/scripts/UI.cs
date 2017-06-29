@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class UI : MonoBehaviour {
 
     public GameObject EventPanel;
-    public GameObject EvolutionsPanel;
+    public GameObject GameOverPanel;
+    public GameObject WitheringWarning;
 
     public ResourceSettings ResourceSettings;
 
@@ -34,19 +35,46 @@ public class UI : MonoBehaviour {
 
     public void Pause()
     {
-        timescale = Time.timeScale;
         Time.timeScale = 0;
     }
     public void UnPause()
     {
-        Time.timeScale = timescale;
+        Time.timeScale = 1f;
+    }
+
+    public void OpenGameOverPanel()
+    {
+        HideWitheringWarning();
+        Pause();
+        GameOverPanel.SetActive(true);
+    }
+
+    public void ShowWitheringWarning()
+    {
+        if (EventPanel.activeSelf) return;
+        if (GameOverPanel.activeSelf) return;
+        WitheringWarning.SetActive(true);
+    }
+    public void HideWitheringWarning()
+    {
+        WitheringWarning.SetActive(false);
     }
 
     public void OpenEventPanel(string title, string text)
     {
+        Debug.Log("1");
+        HideWitheringWarning();
+        Debug.Log("2");
+        Pause();
         EventTitle.text = title;
         EventText.text = text;
         EventPanel.SetActive(true);
+    }
+
+    public void CloseEventPanel()
+    {
+        UnPause();
+        EventPanel.SetActive(false);
     }
 
     private void UpdateResourcesUI()

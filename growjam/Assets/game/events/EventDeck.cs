@@ -31,7 +31,6 @@ public class EventDeck : Tickable {
                 triggeredEvent.gameObject.SetActive(true);
                 StartCoroutine(DisableEvent(triggeredEvent));
 
-                UI.Pause();
                 UI.OpenEventPanel(triggeredEvent.Title, triggeredEvent.Text);
             }
         }
