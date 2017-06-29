@@ -16,4 +16,4 @@ Tech stack:
 
 Contributors:
 * Alex Gouvatsos (alexandros@gouvatsos.com)
-* Anastasios Chrysikos
+* Anastasios Chrysikos (anastasios.p.chrysikos@gmail.com)
