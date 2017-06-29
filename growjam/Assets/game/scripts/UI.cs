@@ -8,6 +8,8 @@ public class UI : MonoBehaviour {
     public GameObject EventPanel;
     public GameObject EvolutionsPanel;
 
+    public ResourceSettings ResourceSettings;
+
     public Text EventTitle;
     public Text EventText;
 
@@ -22,9 +24,6 @@ public class UI : MonoBehaviour {
     public Color Low;
     public Color Medium;
     public Color High;
-
-    public float LowThreshold;
-    public float HighThreshold;
 
     private float timescale;
 
@@ -59,16 +58,16 @@ public class UI : MonoBehaviour {
 
     private void UpdateWaterUI()
     {
-        WaterProgress.fillAmount = Resources.GetWater() / 100f;
+        WaterProgress.fillAmount = (float) (Resources.GetWater() - ResourceSettings.MinWater) / (float) (ResourceSettings.MaxWater - ResourceSettings.MinWater);
 
         if (Resources.WaterRate > 0)
             WaterRate.text = "+" + Resources.WaterRate.ToString();
         else
             WaterRate.text = Resources.WaterRate.ToString();
 
-        if (WaterProgress.fillAmount <= LowThreshold)
+        if (WaterProgress.fillAmount <= ResourceSettings.LowThreshold)
             WaterProgress.color = Low;
-        else if (WaterProgress.fillAmount >= HighThreshold)
+        else if (WaterProgress.fillAmount >= ResourceSettings.HighThreshold)
             WaterProgress.color = High;
         else
             WaterProgress.color = Medium;
@@ -76,16 +75,16 @@ public class UI : MonoBehaviour {
 
     private void UpdateSunlightUI()
     {
-        SunlightProgress.fillAmount = Resources.GetSunlight() / 100f;
+        SunlightProgress.fillAmount = (float) (Resources.GetSunlight() - ResourceSettings.MinSunlight) / (float) (ResourceSettings.MaxSunlight - ResourceSettings.MinSunlight);
 
         if (Resources.SunlightRate > 0)
             SunlightRate.text = "+" + Resources.SunlightRate.ToString();
         else
             SunlightRate.text = Resources.SunlightRate.ToString();
 
-        if (SunlightProgress.fillAmount <= LowThreshold)
+        if (SunlightProgress.fillAmount <= ResourceSettings.LowThreshold)
             SunlightProgress.color = Low;
-        else if (SunlightProgress.fillAmount >= HighThreshold)
+        else if (SunlightProgress.fillAmount >= ResourceSettings.HighThreshold)
             SunlightProgress.color = High;
         else
             SunlightProgress.color = Medium;
@@ -93,16 +92,16 @@ public class UI : MonoBehaviour {
 
     private void UpdateHeatUI()
     {
-        HeatProgress.fillAmount = Resources.GetHeat() / 100f;
+        HeatProgress.fillAmount = (float) (Resources.GetHeat() - ResourceSettings.MinHeat) / (float) (ResourceSettings.MaxHeat - ResourceSettings.MinHeat);
 
         if (Resources.HeatRate > 0)
             HeatRate.text = "+" + Resources.HeatRate.ToString();
         else
             HeatRate.text = Resources.HeatRate.ToString();
 
-        if (HeatProgress.fillAmount <= LowThreshold)
+        if (HeatProgress.fillAmount <= ResourceSettings.LowThreshold)
             HeatProgress.color = Low;
-        else if (HeatProgress.fillAmount >= HighThreshold)
+        else if (HeatProgress.fillAmount >= ResourceSettings.HighThreshold)
             HeatProgress.color = High;
         else
             HeatProgress.color = Medium;

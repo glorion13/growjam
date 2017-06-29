@@ -19,6 +19,8 @@ public class Evolution : Tickable {
     public void ResetTicks()
     {
         Ticks = 0;
+        ProgressBar.fillAmount = (Ticks / Cooldown);
+        Button.interactable = false;
     }
 
     public override void Tick()

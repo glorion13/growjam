@@ -15,6 +15,7 @@ public static class Resources {
     public static void SetSunlight(int value)
     {
         PlayerPrefs.SetInt("sunlight", value);
+
     }
     public static void SetHeat(int value)
     {
