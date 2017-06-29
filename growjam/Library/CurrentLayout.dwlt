@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 1007
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -154,8 +154,8 @@ MonoBehaviour:
     y: 0
     width: 1574
     height: 634
-  m_MinSize: {x: 406, y: 221}
-  m_MaxSize: {x: 8006, y: 4021}
+  m_MinSize: {x: 402, y: 221}
+  m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
   controlID: 23
 --- !u!114 &8
@@ -203,8 +203,8 @@ MonoBehaviour:
     y: 0
     width: 872
     height: 634
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -474,9 +474,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 18.719769
+    m_Target: 14.425244
     speed: 2
-    m_Value: 18.719769
+    m_Value: 14.425244
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -543,9 +543,9 @@ MonoBehaviour:
     height: 302
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 4c010000
-    m_LastClickedID: 0
-    m_ExpandedIDs: b8d1ffff12daffff28daffff8ef9ffffe2fbffff00000000
+    m_SelectedIDs: 380e0200
+    m_LastClickedID: 134712
+    m_ExpandedIDs: 94a6feff78bbfeff3e0fffff8e1fffffe2fbffff000000002e350000523700002aa7010086a80100480a0200c40a0200d80a0200fa0a020068130200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -605,19 +605,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/game/textures/MagicCliffsArtwork
+    - Assets/game/prefabs
   m_ViewMode: 1
   m_StartGridSize: 47
   m_LastFolders:
-  - Assets/game/textures/MagicCliffsArtwork
+  - Assets/game/prefabs
   m_LastFoldersGridSize: 47
   m_LastProjectPath: D:\Development\Games\growjam\growjam
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 23}
-    m_SelectedIDs: 62270000
-    m_LastClickedID: 10082
-    m_ExpandedIDs: 00000000da240000fe240000262500002026000066260000742600008e2600004227000000ca9a3bffffff7f
+    m_SelectedIDs: 182a0000
+    m_LastClickedID: 10776
+    m_ExpandedIDs: 00000000da240000fe2400002625000020260000562600006026000066260000742600008e2600004227000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -672,7 +672,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: da76fbff1674fbff4c9cffff42000000d0d7f5ff0ad3f5ff5ecff5ff540000006a3efaff4e000000a8aef7ffea00fdff2a0000004a00000008450000d06df7ff0a0200003c00000000000000d8400000d03e0000382700001a250200
     m_RenameOverlay:
       m_UserAcceptedRename: 0

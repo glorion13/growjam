@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ResourceSettings : MonoBehaviour {
 
+    public Wither WitherMechanics;
+
     public int MinWater;
     public int MaxWater;
 
@@ -18,20 +20,40 @@ public class ResourceSettings : MonoBehaviour {
 
     private void Update()
     {
-        if (Resources.GetWater() < MinWater)
+        if (Resources.GetWater() <= MinWater)
+        {
             Resources.SetWater(MinWater);
-        if (Resources.GetWater() > MaxWater)
+            WitherMechanics.IsWithering = true;
+        }
+        else if (Resources.GetWater() >= MaxWater)
+        {
             Resources.SetWater(MaxWater);
-
-        if (Resources.GetSunlight() < MinSunlight)
+            WitherMechanics.IsWithering = true;
+        }
+        else if (Resources.GetSunlight() <= MinSunlight)
+        {
             Resources.SetSunlight(MinSunlight);
-        if (Resources.GetSunlight() > MaxSunlight)
+            WitherMechanics.IsWithering = true;
+        }
+        else if (Resources.GetSunlight() >= MaxSunlight)
+        {
             Resources.SetSunlight(MaxSunlight);
-
-        if (Resources.GetHeat() < MinHeat)
+            WitherMechanics.IsWithering = true;
+        }
+        else if (Resources.GetHeat() <= MinHeat)
+        {
             Resources.SetHeat(MinHeat);
-        if (Resources.GetHeat() > MaxHeat)
+            WitherMechanics.IsWithering = true;
+        }
+        else if (Resources.GetHeat() >= MaxHeat)
+        {
             Resources.SetHeat(MaxHeat);
+            WitherMechanics.IsWithering = true;
+        }
+        else
+        {
+            WitherMechanics.IsWithering = false;
+        }
     }
 
 }
