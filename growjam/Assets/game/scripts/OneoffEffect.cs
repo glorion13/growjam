@@ -22,7 +22,5 @@ public class OneoffEffect : MonoBehaviour {
         Resources.AddMaxWater(MaxWaterBonus);
         Resources.AddMaxSunlight(MaxSunlightBonus);
         Resources.AddMaxHeat(MaxHeatBonus);
-
-        Debug.Log(Resources.GetMaxWater() + MaxWaterBonus);
     }
 }

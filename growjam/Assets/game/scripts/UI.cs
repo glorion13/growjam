@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,6 +27,11 @@ public class UI : MonoBehaviour {
     public GameObject SunlightMutationUpgradePanel;
     public GameObject HeatMutationUpgradePanel;
 
+    public GameObject WaterEvolutionPanel;
+    public GameObject SunlightEvolutionPanel;
+    public GameObject HeatEvolutionPanel;
+    public GameObject GeneralEvolutionPanel;
+
     public Text WaterRate;
     public Text SunlightRate;
     public Text HeatRate;
@@ -33,6 +39,82 @@ public class UI : MonoBehaviour {
     public Color Low;
     public Color Medium;
     public Color High;
+
+    public void OpenWaterEvolutionPanel()
+    {
+        if (WaterEvolutionPanel.activeSelf)
+        {
+            CloseWaterEvolutionPanel();
+        }
+        else
+        {
+            CloseSunlightEvolutionPanel();
+            CloseHeatEvolutionPanel();
+            CloseGeneralEvolutionPanel();
+            WaterEvolutionPanel.SetActive(true);
+        }
+    }
+    private void CloseWaterEvolutionPanel()
+    {
+        WaterEvolutionPanel.SetActive(false);
+    }
+
+    public void OpenSunlightEvolutionPanel()
+    {
+        if (SunlightEvolutionPanel.activeSelf)
+        {
+            CloseSunlightEvolutionPanel();
+        }
+        else
+        {
+            CloseWaterEvolutionPanel();
+            CloseHeatEvolutionPanel();
+            CloseGeneralEvolutionPanel();
+            SunlightEvolutionPanel.SetActive(true);
+        }
+    }
+    private void CloseSunlightEvolutionPanel()
+    {
+        SunlightEvolutionPanel.SetActive(false);
+    }
+
+    public void OpenHeatEvolutionPanel()
+    {
+        if (HeatEvolutionPanel.activeSelf)
+        {
+            CloseHeatEvolutionPanel();
+        }
+        else
+        {
+            CloseWaterEvolutionPanel();
+            CloseSunlightEvolutionPanel();
+            CloseGeneralEvolutionPanel();
+            HeatEvolutionPanel.SetActive(true);
+        }
+    }
+    private void CloseHeatEvolutionPanel()
+    {
+        HeatEvolutionPanel.SetActive(false);
+    }
+
+    public void OpenGeneralEvolutionPanel()
+    {
+        /*if (GeneralEvolutionPanel.activeSelf)
+        {
+            CloseGeneralEvolutionPanel();
+        }
+        else
+        {
+            CloseWaterEvolutionPanel();
+            CloseSunlightEvolutionPanel();
+            CloseHeatEvolutionPanel();
+            GeneralEvolutionPanel.SetActive(true);
+        }*/
+    }
+    private void CloseGeneralEvolutionPanel()
+    {
+        //GeneralEvolutionPanel.SetActive(false);
+    }
 
     public void OpenWaterMutationPanel()
     {
@@ -148,9 +230,7 @@ public class UI : MonoBehaviour {
 
     public void OpenEventPanel(string title, string text)
     {
-        Debug.Log("1");
         HideWitheringWarning();
-        Debug.Log("2");
         Pause();
         EventTitle.text = title;
         EventText.text = text;
@@ -177,7 +257,7 @@ public class UI : MonoBehaviour {
 
     private void UpdateWaterUI()
     {
-        WaterProgress.fillAmount = (float)(Resources.GetWater() - ResourceSettings.MinWater) / (float)(ResourceSettings.MaxWater - ResourceSettings.MinWater);
+        WaterProgress.fillAmount = (float)Resources.GetWater() / (float)Resources.GetMaxWater();
 
         if (Resources.WaterRate > 0)
             WaterRate.text = "+" + Resources.WaterRate.ToString();
@@ -187,7 +267,7 @@ public class UI : MonoBehaviour {
         if (WaterProgress.fillAmount <= ResourceSettings.LowThreshold)
         {
             WaterProgress.color = Low;
-            CloseWaterMutationPanel();
+            OpenWaterMutationPanel();
         }
         else if (WaterProgress.fillAmount >= ResourceSettings.HighThreshold)
         {
@@ -203,7 +283,7 @@ public class UI : MonoBehaviour {
 
     private void UpdateSunlightUI()
     {
-        SunlightProgress.fillAmount = (float) (Resources.GetSunlight() - ResourceSettings.MinSunlight) / (float) (ResourceSettings.MaxSunlight - ResourceSettings.MinSunlight);
+        SunlightProgress.fillAmount = (float) Resources.GetSunlight() / (float) Resources.GetMaxSunlight();
 
         if (Resources.SunlightRate > 0)
             SunlightRate.text = "+" + Resources.SunlightRate.ToString();
@@ -213,7 +293,7 @@ public class UI : MonoBehaviour {
         if (SunlightProgress.fillAmount <= ResourceSettings.LowThreshold)
         {
             SunlightProgress.color = Low;
-            CloseSunlightMutationPanel();
+            OpenSunlightMutationPanel();
         }
         else if (SunlightProgress.fillAmount >= ResourceSettings.HighThreshold)
         {
@@ -229,7 +309,7 @@ public class UI : MonoBehaviour {
 
     private void UpdateHeatUI()
     {
-        HeatProgress.fillAmount = (float) (Resources.GetHeat() - ResourceSettings.MinHeat) / (float) (ResourceSettings.MaxHeat - ResourceSettings.MinHeat);
+        HeatProgress.fillAmount = (float)Resources.GetHeat() / (float)Resources.GetMaxHeat();
 
         if (Resources.HeatRate > 0)
             HeatRate.text = "+" + Resources.HeatRate.ToString();
@@ -239,7 +319,7 @@ public class UI : MonoBehaviour {
         if (HeatProgress.fillAmount <= ResourceSettings.LowThreshold)
         {
             HeatProgress.color = Low;
-            CloseHeatMutationPanel();
+            OpenHeatMutationPanel();
         }
         else if (HeatProgress.fillAmount >= ResourceSettings.HighThreshold)
         {

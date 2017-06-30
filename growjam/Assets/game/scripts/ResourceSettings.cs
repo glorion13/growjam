@@ -6,13 +6,8 @@ public class ResourceSettings : MonoBehaviour {
 
     public Wither WitherMechanics;
 
-    public int MinWater;
     public int MaxWater;
-
-    public int MinSunlight;
     public int MaxSunlight;
-
-    public int MinHeat;
     public int MaxHeat;
 
     public float LowThreshold;
@@ -48,34 +43,34 @@ public class ResourceSettings : MonoBehaviour {
 
     private void CheckWithering()
     {
-        if (Resources.GetWater() <= MinWater)
+        if (Resources.GetWater() <= 0)
         {
-            Resources.SetWater(MinWater);
+            Resources.SetWater(0);
             WitherMechanics.IsWithering = true;
         }
-        else if (Resources.GetWater() >= MaxWater)
+        else if (Resources.GetWater() >= Resources.GetMaxWater())
         {
-            Resources.SetWater(MaxWater);
+            Resources.SetWater(Resources.GetMaxSunlight());
             WitherMechanics.IsWithering = true;
         }
-        else if (Resources.GetSunlight() <= MinSunlight)
+        else if (Resources.GetSunlight() <= 0)
         {
-            Resources.SetSunlight(MinSunlight);
+            Resources.SetSunlight(0);
             WitherMechanics.IsWithering = true;
         }
-        else if (Resources.GetSunlight() >= MaxSunlight)
+        else if (Resources.GetSunlight() >= Resources.GetMaxSunlight())
         {
-            Resources.SetSunlight(MaxSunlight);
+            Resources.SetSunlight(Resources.GetMaxSunlight());
             WitherMechanics.IsWithering = true;
         }
-        else if (Resources.GetHeat() <= MinHeat)
+        else if (Resources.GetHeat() <= 0)
         {
-            Resources.SetHeat(MinHeat);
+            Resources.SetHeat(0);
             WitherMechanics.IsWithering = true;
         }
-        else if (Resources.GetHeat() >= MaxHeat)
+        else if (Resources.GetHeat() >= Resources.GetMaxHeat())
         {
-            Resources.SetHeat(MaxHeat);
+            Resources.SetHeat(Resources.GetMaxHeat());
             WitherMechanics.IsWithering = true;
         }
         else
