@@ -48,4 +48,44 @@ public static class Resources {
         return PlayerPrefs.GetInt("heat");
     }
 
+    public static void SetMaxWater(int value)
+    {
+        PlayerPrefs.SetInt("maxWater", value);
+    }
+    public static void SetMaxSunlight(int value)
+    {
+        PlayerPrefs.SetInt("maxSunlight", value);
+
+    }
+    public static void SetMaxHeat(int value)
+    {
+        PlayerPrefs.SetInt("maxHeat", value);
+    }
+
+    public static int GetMaxWater()
+    {
+        return PlayerPrefs.GetInt("maxWater");
+    }
+    public static int GetMaxSunlight()
+    {
+        return PlayerPrefs.GetInt("maxSunlight");
+    }
+    public static int GetMaxHeat()
+    {
+        return PlayerPrefs.GetInt("maxHeat");
+    }
+
+    public static void AddMaxWater(int value)
+    {
+        PlayerPrefs.SetInt("maxWater", GetMaxWater() + value);
+    }
+    public static void AddMaxSunlight(int value)
+    {
+        PlayerPrefs.SetInt("maxSunlight", GetMaxSunlight() + value);
+    }
+    public static void AddMaxHeat(int value)
+    {
+        PlayerPrefs.SetInt("maxHeat", GetMaxHeat() + value);
+    }
+
 }

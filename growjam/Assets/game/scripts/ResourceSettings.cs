@@ -20,6 +20,34 @@ public class ResourceSettings : MonoBehaviour {
 
     private void Update()
     {
+        CheckWithering();
+    }
+
+    private void Start()
+    {
+        SetResourceLimits();
+    }
+
+    private void SetResourceLimits()
+    {
+        if (Resources.GetMaxWater() == 0)
+            Resources.SetMaxWater(MaxWater);
+        else
+            MaxWater = Resources.GetMaxWater();
+
+        if (Resources.GetMaxSunlight() == 0)
+            Resources.SetMaxSunlight(MaxSunlight);
+        else
+            MaxSunlight = Resources.GetMaxSunlight();
+
+        if (Resources.GetMaxHeat() == 0)
+            Resources.SetMaxHeat(MaxHeat);
+        else
+            MaxHeat = Resources.GetMaxHeat();
+    }
+
+    private void CheckWithering()
+    {
         if (Resources.GetWater() <= MinWater)
         {
             Resources.SetWater(MinWater);

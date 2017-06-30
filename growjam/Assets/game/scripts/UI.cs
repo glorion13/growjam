@@ -18,6 +18,14 @@ public class UI : MonoBehaviour {
     public Image SunlightProgress;
     public Image HeatProgress;
 
+    public GameObject WaterMutationPanel;
+    public GameObject SunlightMutationPanel;
+    public GameObject HeatMutationPanel;
+
+    public GameObject WaterMutationUpgradePanel;
+    public GameObject SunlightMutationUpgradePanel;
+    public GameObject HeatMutationUpgradePanel;
+
     public Text WaterRate;
     public Text SunlightRate;
     public Text HeatRate;
@@ -25,6 +33,84 @@ public class UI : MonoBehaviour {
     public Color Low;
     public Color Medium;
     public Color High;
+
+    public void OpenWaterMutationPanel()
+    {
+        WaterMutationPanel.SetActive(true);
+    }
+    public void CloseWaterMutationPanel()
+    {
+        WaterMutationPanel.SetActive(false);
+    }
+    public void OpenSunlightMutationPanel()
+    {
+        SunlightMutationPanel.SetActive(true);
+    }
+    public void CloseSunlightMutationPanel()
+    {
+        SunlightMutationPanel.SetActive(false);
+    }
+    public void OpenHeatMutationPanel()
+    {
+        HeatMutationPanel.SetActive(true);
+    }
+    public void CloseHeatMutationPanel()
+    {
+        HeatMutationPanel.SetActive(false);
+    }
+
+    public void OpenWaterMutationUpgradePanel()
+    {
+        if (WaterMutationUpgradePanel.activeSelf)
+        {
+            CloseWaterMutationUpgradePanel();
+        }
+        else
+        {
+            CloseSunlightMutationUpgradePanel();
+            CloseHeatMutationUpgradePanel();
+            WaterMutationUpgradePanel.SetActive(true);
+        }
+    }
+    public void CloseWaterMutationUpgradePanel()
+    {
+        WaterMutationUpgradePanel.SetActive(false);
+    }
+    public void OpenSunlightMutationUpgradePanel()
+    {
+        if (SunlightMutationUpgradePanel.activeSelf)
+        {
+            CloseSunlightMutationUpgradePanel();
+        }
+        else
+        {
+            CloseWaterMutationUpgradePanel();
+            CloseHeatMutationUpgradePanel();
+            SunlightMutationUpgradePanel.SetActive(true);
+        }
+    }
+    public void CloseSunlightMutationUpgradePanel()
+    {
+        SunlightMutationUpgradePanel.SetActive(false);
+    }
+
+    public void OpenHeatMutationUpgradePanel()
+    {
+        if (HeatMutationUpgradePanel.activeSelf)
+        {
+            CloseHeatMutationUpgradePanel();
+        }
+        else
+        {
+            CloseWaterMutationUpgradePanel();
+            CloseSunlightMutationUpgradePanel();
+            HeatMutationUpgradePanel.SetActive(true);
+        }
+    }
+    public void CloseHeatMutationUpgradePanel()
+    {
+        HeatMutationUpgradePanel.SetActive(false);
+    }
 
     private float timescale;
 
@@ -84,9 +170,14 @@ public class UI : MonoBehaviour {
         UpdateHeatUI();
     }
 
+    private void ActivateWaterMutation()
+    {
+
+    }
+
     private void UpdateWaterUI()
     {
-        WaterProgress.fillAmount = (float) (Resources.GetWater() - ResourceSettings.MinWater) / (float) (ResourceSettings.MaxWater - ResourceSettings.MinWater);
+        WaterProgress.fillAmount = (float)(Resources.GetWater() - ResourceSettings.MinWater) / (float)(ResourceSettings.MaxWater - ResourceSettings.MinWater);
 
         if (Resources.WaterRate > 0)
             WaterRate.text = "+" + Resources.WaterRate.ToString();
@@ -94,11 +185,20 @@ public class UI : MonoBehaviour {
             WaterRate.text = Resources.WaterRate.ToString();
 
         if (WaterProgress.fillAmount <= ResourceSettings.LowThreshold)
+        {
             WaterProgress.color = Low;
+            CloseWaterMutationPanel();
+        }
         else if (WaterProgress.fillAmount >= ResourceSettings.HighThreshold)
+        {
             WaterProgress.color = High;
+            OpenWaterMutationPanel();
+        }
         else
+        {
             WaterProgress.color = Medium;
+            CloseWaterMutationPanel();
+        }
     }
 
     private void UpdateSunlightUI()
@@ -111,11 +211,20 @@ public class UI : MonoBehaviour {
             SunlightRate.text = Resources.SunlightRate.ToString();
 
         if (SunlightProgress.fillAmount <= ResourceSettings.LowThreshold)
+        {
             SunlightProgress.color = Low;
+            CloseSunlightMutationPanel();
+        }
         else if (SunlightProgress.fillAmount >= ResourceSettings.HighThreshold)
+        {
             SunlightProgress.color = High;
+            OpenSunlightMutationPanel();
+        }
         else
+        {
             SunlightProgress.color = Medium;
+            CloseSunlightMutationPanel();
+        }
     }
 
     private void UpdateHeatUI()
@@ -128,11 +237,20 @@ public class UI : MonoBehaviour {
             HeatRate.text = Resources.HeatRate.ToString();
 
         if (HeatProgress.fillAmount <= ResourceSettings.LowThreshold)
+        {
             HeatProgress.color = Low;
+            CloseHeatMutationPanel();
+        }
         else if (HeatProgress.fillAmount >= ResourceSettings.HighThreshold)
+        {
             HeatProgress.color = High;
+            OpenHeatMutationPanel();
+        }
         else
+        {
             HeatProgress.color = Medium;
+            CloseHeatMutationPanel();
+        }
     }
 
 }
