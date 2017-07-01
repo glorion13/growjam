@@ -9,6 +9,8 @@ public class ProgressIntro : MonoBehaviour {
     public Text[] TextList;
     private int currentTextIndex;
 
+    public string SceneName;
+
     private void Start()
     {
         currentTextIndex = 0;
@@ -21,6 +23,6 @@ public class ProgressIntro : MonoBehaviour {
         if (currentTextIndex < TextList.Length)
             TextList[currentTextIndex].gameObject.SetActive(true);
         else
-            SceneManager.LoadScene("game");
+            SceneManager.LoadScene(SceneName);
     }
 }
